@@ -1,0 +1,93 @@
+@{
+    ViewData["Title"] = "Lägg till evenemang";
+    Layout = "_EditorLayout";
+}
+
+<main>
+    <div class="container">
+        <section>
+            <h2 class="section-title">Lägg till evenemang</h2>
+
+            <div class="flex-container">
+                <div class="flex-col">
+
+                    <form class="book-form"
+                          asp-controller="Editor"
+                          asp-action="StartEditor"
+                          method="get">
+
+                        <fieldset>
+
+                            <p class="form-group">
+                                <label for="heading">Rubrik: *</label>
+                                <input type="text" name="heading" id="heading">
+                            </p>
+
+                            <p class="form-group">
+                                <label for="shortdescription">Kort beskrivning: *</label>
+                                <input type="text" name="shortdescription" id="shortdescription">
+                            </p>
+
+                            <p class="form-group">
+                                <label for="date">Datum och tid: *</label>
+                                <input type="date" name="date" id="date">
+                            </p>
+
+                            <p class="form-group">
+                                <label for="place">Plats: *</label>
+                                <input type="text" name="place" id="place">
+                            </p>
+
+                            <p class="form-group">
+                                <label for="category">Kategori: *</label>
+
+                                <select name="category" id="category">
+                                    <option>Välj kategori</option>
+                                    <option value="music">Musik</option>
+                                    <option value="theater">Teater</option>
+                                    <option value="dance">Dans</option>
+                                    <option value="book">Litteratur</option>
+                                    <option value="market">Marknad</option>
+                                    <option value="child">Barn</option>
+                                    <option value="sport">Sport</option>
+                                    <option value="other">Övrigt</option>
+                                </select>
+                            </p>
+
+                            <p class="form-group">
+                                <label for="description">Beskrivning: *</label>
+                                <textarea name="description"
+                                          id="description"
+                                          cols="55"
+                                          rows="10"></textarea>
+                            </p>
+
+                            <p class="form-group">
+                                <label for="organizer">Arrangör: *</label>
+                                <input type="text" name="organizer" id="organizer">
+                            </p>
+
+                            <p class="form-group">
+                                <label for="loadImage">Ladda upp bild: *</label>
+                                <input type="file" name="loadImage" id="loadImage">
+                            </p>
+
+                            <p class="form-group">
+                                <label for="altText">Alternativ text till bilden:</label>
+                                <input type="text" name="altText" id="altText">
+                            </p>
+
+                            <p class="form-group">
+                                <input type="submit"
+                                       class="btn btn-primary"
+                                       value="Spara evenemang">
+                            </p>
+
+                        </fieldset>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+    </div>
+</main>

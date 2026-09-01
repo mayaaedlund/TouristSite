@@ -1,0 +1,52 @@
+@{
+    ViewData["Title"] = "Evenemangsdetaljer";
+}
+
+<main>
+    <div class="container">
+        <section>
+            <h2>Kommande evenemang</h2>
+
+            <div class="flex-container">
+                <div class="flex-col-2">
+                    <p class="rounded">
+                        <span class="boxMonth">Okt</span>
+                        <span class="boxDate">4</span>
+                    </p>
+
+                    <h3>Stadsvandring</h3>
+
+                    <p class="flex-event">
+                        <span class="event">Turisbyrån</span>
+                        <span class="event">Övrigt</span>
+                        <span class="event">4 okt</span>
+                        <span class="event">15:00</span>
+                    </p>
+
+                    <h4>Plats: Turisbyrån</h4>
+
+                    <p>
+                        Följ med på en inspirerande stadsvandring där kunniga guider tar dig med genom
+                        de mest spännande berättelserna från stadens alla epoker. Vi samlas utanför
+                        Turistbyrån. Ingen kostnad.
+                    </p>
+
+                    <h5>Arrangör: Turisbyrån</h5>
+
+                    <p>
+                        <a asp-controller="Citizen"
+                           asp-action="EventList">
+                            Gå tillbaka till listan med evenemang
+                        </a>
+                    </p>
+                </div>
+
+                <div class="flex-col-2">
+                    <p>
+                        <img src="~/images/pic_3.jpg" alt="Stadsbild" width="400">
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
