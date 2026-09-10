@@ -1,3 +1,8 @@
+@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+    var action = ViewContext.RouteData.Values["action"]?.ToString();
+}
+
 <!DOCTYPE html>
 <html lang="sv">
 
@@ -43,14 +48,16 @@
             <ul>
                 <li>
                     <a asp-controller="Editor"
-                       asp-action="StartEditor">
+                       asp-action="StartEditor"
+                       class="@(controller == "Editor" && action == "StartEditor" ? "active" : "")">
                         Start
                     </a>
                 </li>
 
                 <li>
                     <a asp-controller="Editor"
-                       asp-action="BookEvent">
+                       asp-action="BookEvent"
+                       class="@(controller == "Editor" && action == "BookEvent" ? "active" : "")">
                         Lägg till evenemang
                     </a>
                 </li>
