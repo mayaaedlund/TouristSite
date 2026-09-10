@@ -1,3 +1,5 @@
+@model IEnumerable<TouristSite.Models.TownEvent>
+
 @{
     ViewData["Title"] = "Evenemang";
 }
@@ -8,59 +10,45 @@
             <h2>Kommande evenemang</h2>
 
             <div class="flex-container">
-                <div class="flex-col-3">
-                    <div class="card">
-                        <img src="~/images/pic_3.jpg" alt="Stadsbild" class="card-img">
 
-                        <div class="card-content">
-                            <h3 class="card-title">Stadsvandring</h3>
-                            <p class="card-text">Följ med på spännande stadsvandring.</p>
-                            <p class="card-text">2026-10-04</p>
+                @foreach (var item in Model)
+                {
+                    var picture = item.Pictures.FirstOrDefault();
 
-                            <a asp-controller="Citizen"
-                               asp-action="EventDetail"
-                               class="button">
-                                Se evenemang
-                            </a>
+                    <div class="flex-col-3">
+                        <div class="card">
+
+                            @if (picture != null)
+                            {
+                                <img src="@Url.Content("~/pictures/" + picture.PictureName)"
+                                     alt="@picture.AltText"
+                                     class="card-img">
+                            }
+
+                            <div class="card-content">
+                                <h3 class="card-title">
+                                    @item.EventName
+                                </h3>
+
+                                <p class="card-text">
+                                    @item.ShortDescription
+                                </p>
+
+                                <p class="card-text">
+                                    @item.EventDate.ToString("yyyy-MM-dd")
+                                </p>
+
+                                <a asp-controller="Citizen"
+                                   asp-action="EventDetail"
+                                   asp-route-id="@item.TownEventId"
+                                   class="button">
+                                    Se evenemang
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
 
-                <div class="flex-col-3">
-                    <div class="card">
-                        <img src="~/images/pic_3.jpg" alt="Stadsbild" class="card-img">
-
-                        <div class="card-content">
-                            <h3 class="card-title">Stadsvandring</h3>
-                            <p class="card-text">Följ med på spännande stadsvandring.</p>
-                            <p class="card-text">2026-10-04</p>
-
-                            <a asp-controller="Citizen"
-                               asp-action="EventDetail"
-                               class="button">
-                                Se evenemang
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex-col-3">
-                    <div class="card">
-                        <img src="~/images/pic_3.jpg" alt="Stadsbild" class="card-img">
-
-                        <div class="card-content">
-                            <h3 class="card-title">Stadsvandring</h3>
-                            <p class="card-text">Följ med på spännande stadsvandring.</p>
-                            <p class="card-text">2026-10-04</p>
-
-                            <a asp-controller="Citizen"
-                               asp-action="EventDetail"
-                               class="button">
-                                Se evenemang
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
     </div>

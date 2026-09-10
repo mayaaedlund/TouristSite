@@ -1,5 +1,9 @@
+@model TouristSite.Models.TownEvent
+
 @{
     ViewData["Title"] = "Evenemangsdetaljer";
+
+    var picture = Model.Pictures.FirstOrDefault();
 }
 
 <main>
@@ -9,29 +13,48 @@
 
             <div class="flex-container">
                 <div class="flex-col-2">
+
                     <p class="rounded">
-                        <span class="boxMonth">Okt</span>
-                        <span class="boxDate">4</span>
+                        <span class="boxMonth">
+                            @Model.EventDate.ToString("MMM")
+                        </span>
+
+                        <span class="boxDate">
+                            @Model.EventDate.Day
+                        </span>
                     </p>
 
-                    <h3>Stadsvandring</h3>
+                    <h3>@Model.EventName</h3>
 
                     <p class="flex-event">
-                        <span class="event">Turisbyrån</span>
-                        <span class="event">Övrigt</span>
-                        <span class="event">4 okt</span>
-                        <span class="event">15:00</span>
+                        <span class="event">
+                            @Model.Organizer
+                        </span>
+
+                        <span class="event">
+                            @Model.Category
+                        </span>
+
+                        <span class="event">
+                            @Model.EventDate.ToString("d MMM")
+                        </span>
+
+                        <span class="event">
+                            @Model.EventDate.ToString("HH:mm")
+                        </span>
                     </p>
 
-                    <h4>Plats: Turisbyrån</h4>
+                    <h4>
+                        Plats: @Model.Place
+                    </h4>
 
                     <p>
-                        Följ med på en inspirerande stadsvandring där kunniga guider tar dig med genom
-                        de mest spännande berättelserna från stadens alla epoker. Vi samlas utanför
-                        Turistbyrån. Ingen kostnad.
+                        @Model.LongDescription
                     </p>
 
-                    <h5>Arrangör: Turisbyrån</h5>
+                    <h5>
+                        Arrangör: @Model.Organizer
+                    </h5>
 
                     <p>
                         <a asp-controller="Citizen"
@@ -43,9 +66,15 @@
 
                 <div class="flex-col-2">
                     <p>
-                        <img src="~/images/pic_3.jpg" alt="Stadsbild" width="400">
+                        @if (picture != null)
+                        {
+                            <img src="@Url.Content("~/pictures/" + picture.PictureName)"
+                                 alt="@picture.AltText"
+                                 width="400">
+                        }
                     </p>
                 </div>
+
             </div>
         </section>
     </div>
