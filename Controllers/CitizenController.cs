@@ -13,11 +13,13 @@ public class CitizenController : Controller
     this.repository = repository;
   }
 
+  // Displays information about the municipality.
   public IActionResult About()
   {
     return View();
   }
 
+  // Displays the contact page.
   public IActionResult Contact()
   {
     return View();

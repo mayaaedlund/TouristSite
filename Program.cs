@@ -7,14 +7,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Registers the database context and connects it to SQL Server.
 builder.Services.AddDbContext<TouristContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Uses the Entity Framework repository when event data is requested.
 builder.Services.AddScoped<ITownEventRepository, EFRepository>();
 
 var app = builder.Build();
 
+// Adds the initial test data to the database when the application starts.
 using (var scope = app.Services.CreateScope())
 {
   var context = scope.ServiceProvider.GetRequiredService<TouristContext>();
