@@ -10,6 +10,13 @@
                 Välkommen till Evenemangsbokning
             </h2>
 
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <p class="center">
+                    @TempData["SuccessMessage"]
+                </p>
+            }
+
             <h3 class="center">
                 Du kan som redaktör gå in och lägga till evenemang för din förening
             </h3>

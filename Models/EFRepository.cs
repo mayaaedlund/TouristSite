@@ -25,6 +25,13 @@ namespace TouristSite.Models
           .FirstOrDefault(e => e.TownEventId == id);
     }
 
+    // Saves a new event to the database.
+    public void SaveEvent(TownEvent townEvent)
+    {
+      context.TownEvents.Add(townEvent);
+      context.SaveChanges();
+    }
+
     // Returns all event categories.
     public IQueryable<Category> Categories =>
         context.Categories;

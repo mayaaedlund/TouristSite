@@ -1,0 +1,16 @@
+@model IEnumerable<Category>
+
+<select name="Category"
+        id="category"
+        data-val="true"
+        data-val-required="The Category field is required.">
+
+    <option value="">Välj kategori</option>
+
+    @foreach (var category in Model)
+    {
+        <option value="@category.CategoryName">
+            @category.CategoryName
+        </option>
+    }
+</select>

@@ -1,3 +1,5 @@
+@model TownEvent
+
 @{
     ViewData["Title"] = "Lägg till evenemang";
     Layout = "_EditorLayout";
@@ -13,58 +15,56 @@
 
                     <form class="book-form"
                           asp-controller="Editor"
-                          asp-action="StartEditor"
-                          method="get">
+                          asp-action="BookEvent"
+                          method="post"
+                          enctype="multipart/form-data">
 
                         <fieldset>
 
                             <p class="form-group">
-                                <label for="heading">Rubrik: *</label>
-                                <input type="text" name="heading" id="heading">
+                                <label asp-for="EventName">Rubrik: *</label>
+                                <input asp-for="EventName" type="text">
+                                <span asp-validation-for="EventName"></span>
                             </p>
 
                             <p class="form-group">
-                                <label for="shortdescription">Kort beskrivning: *</label>
-                                <input type="text" name="shortdescription" id="shortdescription">
+                                <label asp-for="ShortDescription">Kort beskrivning: *</label>
+                                <input asp-for="ShortDescription" type="text">
+                                <span asp-validation-for="ShortDescription"></span>
                             </p>
 
                             <p class="form-group">
-                                <label for="date">Datum och tid: *</label>
-                                <input type="date" name="date" id="date">
+                                <label asp-for="EventDate">Datum och tid: *</label>
+                                <input asp-for="EventDate" type="datetime-local">
+                                <span asp-validation-for="EventDate"></span>
                             </p>
 
                             <p class="form-group">
-                                <label for="place">Plats: *</label>
-                                <input type="text" name="place" id="place">
+                                <label asp-for="Place">Plats: *</label>
+                                <input asp-for="Place" type="text">
+                                <span asp-validation-for="Place"></span>
                             </p>
 
                             <p class="form-group">
                                 <label for="category">Kategori: *</label>
 
-                                <select name="category" id="category">
-                                    <option>Välj kategori</option>
-                                    <option value="music">Musik</option>
-                                    <option value="theater">Teater</option>
-                                    <option value="dance">Dans</option>
-                                    <option value="book">Litteratur</option>
-                                    <option value="market">Marknad</option>
-                                    <option value="child">Barn</option>
-                                    <option value="sport">Sport</option>
-                                    <option value="other">Övrigt</option>
-                                </select>
+                                @await Component.InvokeAsync("CategoryList")
+
+                                <span asp-validation-for="Category"></span>
                             </p>
 
                             <p class="form-group">
-                                <label for="description">Beskrivning: *</label>
-                                <textarea name="description"
-                                          id="description"
+                                <label asp-for="LongDescription">Beskrivning: *</label>
+                                <textarea asp-for="LongDescription"
                                           cols="55"
                                           rows="10"></textarea>
+                                <span asp-validation-for="LongDescription"></span>
                             </p>
 
                             <p class="form-group">
-                                <label for="organizer">Arrangör: *</label>
-                                <input type="text" name="organizer" id="organizer">
+                                <label asp-for="Organizer">Arrangör: *</label>
+                                <input asp-for="Organizer" type="text">
+                                <span asp-validation-for="Organizer"></span>
                             </p>
 
                             <p class="form-group">
@@ -91,3 +91,7 @@
         </section>
     </div>
 </main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>

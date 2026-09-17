@@ -6,6 +6,8 @@ namespace TouristSite.Models
 
     TownEvent? GetEventDetail(int id);
 
+    void SaveEvent(TownEvent townEvent);
+
     IQueryable<Category> Categories { get; }
   }
 }
