@@ -39,6 +39,12 @@ namespace TouristSite.Models
             }
         }.AsQueryable();
 
+    // Returns one specific event based on its id.
+    public TownEvent? GetEventDetail(int id)
+    {
+      return TownEvents.FirstOrDefault(e => e.TownEventId == id);
+    }
+
     public IQueryable<Category> Categories => new List<Category>
         {
             new Category { CategoryId = "C01", CategoryName = "Musik" },

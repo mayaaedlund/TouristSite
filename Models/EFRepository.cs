@@ -17,6 +17,14 @@ namespace TouristSite.Models
     public IQueryable<TownEvent> TownEvents =>
         context.TownEvents.Include(e => e.Pictures);
 
+    // Returns one specific event based on its id, together with its pictures.
+    public TownEvent? GetEventDetail(int id)
+    {
+      return context.TownEvents
+          .Include(e => e.Pictures)
+          .FirstOrDefault(e => e.TownEventId == id);
+    }
+
     // Returns all event categories.
     public IQueryable<Category> Categories =>
         context.Categories;

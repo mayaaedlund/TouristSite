@@ -28,8 +28,7 @@ public class CitizenController : Controller
   // Shows details for one specific event.
   public IActionResult EventDetail(int id)
   {
-    var townEvent = repository.TownEvents
-        .FirstOrDefault(e => e.TownEventId == id);
+    var townEvent = repository.GetEventDetail(id);
 
     if (townEvent == null)
     {
